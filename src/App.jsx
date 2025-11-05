@@ -1,9 +1,9 @@
 import styles from "./App.module.css";
-import FotoPerfil from "../public/FOTO.png";
-import FacebookIcon from "../public/LogoFace.webp";
-import GitHubIcon from "../public/LogoGit.png";
-import InstagramIcon from "../public/LogoInsta.webp";
-import WhatsappIcon from "../public/LogoWhats.webp";
+import FotoPerfil from "/FOTO.png";
+import FacebookIcon from "/LogoFace.webp";
+import GitHubIcon from "/LogoGit.png";
+import InstagramIcon from "/LogoInsta.webp";
+import WhatsappIcon from "/LogoWhats.webp";
 // LOGOS DAS TECNOLOGIAS --------------
 
 import htmlIMG from "/HTML.png";
