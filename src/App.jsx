@@ -4,17 +4,46 @@ import FacebookIcon from "/LogoFace.webp";
 import GitHubIcon from "/LogoGit.png";
 import InstagramIcon from "/LogoInsta.webp";
 import WhatsappIcon from "/LogoWhats.webp";
+import Curitiba1 from "/foto1.webp";
+import Curitiba2 from "/foto2.webp";
+import Curitiba3 from "/foto3.webp";
 // LOGOS DAS TECNOLOGIAS --------------
 
 import htmlIMG from "/HTML.png";
 import cssIMG from "/CSS.png";
 import jsIMG from "/JS.png";
-import viteIMG from "/VITE.jpg";
+import viteIMG from "/Vite.png";
 import reactIMG from "/REACT.png";
 import vercelIMG from "/VERCEL.webp";
 
+import { useState } from "react";
+
 function App() {
   //javascript
+
+  const defaultPhoneNumber = "5541999613787";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleZap = () => {
+    const { name, email, message } = formData;
+
+    const urlZap = `https://api.whatsapp.com/send?phone=${defaultPhoneNumber}&text=
+    Nome:%20${name}%0D%0A
+    Email:%20${email}%0D%0A
+    Mensagem:%20${message}%0D%0A`;
+
+    window.open(urlZap, "_blank");
+  };
 
   return (
     <>
@@ -23,6 +52,7 @@ function App() {
         <a href="#s2">Cards</a>
         <a href="#s3">Video</a>
         <a href="#s4">Contato</a>
+        <a href="#s5">Minha Cidade</a>
       </nav>
       <main>
         <section className={styles.s1} id="s1">
@@ -115,8 +145,107 @@ function App() {
           <h2>sessao 3</h2>
         </section>
 
-        <section id="s4">
-          <h2>sessao 4</h2>
+        <section id="s4" className={styles.s4}>
+          <h2>CONTATO</h2>
+          <div className={styles.formData}>
+            <label htmlFor="name">Informe seu nome</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="name">Informe seu email</label>
+            <input
+              type="emai"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="name">Informe uma mensagem</label>
+            <textarea
+              type="message"
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              cols="30"
+              rows="10"
+              required
+            ></textarea>
+            <button onClick={handleZap}>Enviar mensagem</button>
+          </div>
+        </section>
+
+        <section id="s5" className={styles.s5}>
+          <h3>Curitiba</h3>
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src={Curitiba1} class="d-block w-100" alt="..." />
+              </div>
+              <div class="carousel-item">
+                <img src={Curitiba2} class="d-block w-100" alt="..." />
+              </div>
+              <div class="carousel-item">
+                <img src={Curitiba3} class="d-block w-100" alt="..." />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </section>
       </main>
       <footer className={styles.rodape}>
